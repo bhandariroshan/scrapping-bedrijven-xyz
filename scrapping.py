@@ -174,21 +174,23 @@ class Soce():
                 province = str(province.xpath('./text()')[0])
             except:
                 pass
-
-            db.add_data({
-                'date_scrapped': date_scrapped,
-                'category': unprocessed['category'],
-                'page': unprocessed['page'],
-                'url': nav_link,
-                'company_name': company_name,
-                'zipcode': zipcode,
-                'street_address': street_address,
-                'house_number': house_number,
-                'city': city,
-                'website': website,
-                'email': email,
-                'phone_number': phone
-            })
+            try:
+                db.add_data({
+                    'date_scrapped': date_scrapped,
+                    'category': unprocessed['category'],
+                    'page': unprocessed['page'],
+                    'url': nav_link,
+                    'company_name': company_name,
+                    'zipcode': zipcode,
+                    'street_address': street_address,
+                    'house_number': house_number,
+                    'city': city,
+                    'website': website,
+                    'email': email,
+                    'phone_number': phone
+                })
+            except:
+                print ("Exception")
 
             db.update_link(unprocessed['link'])
             unprocessed = db.get_one_unprocessed()
