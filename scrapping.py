@@ -112,12 +112,16 @@ class Soce():
             province = None
             website = None
             email = None
-
-            nav_link = self.base_url + unprocessed['link'][1:]
-            response = requests.get(nav_link)
-            self.base_html = response.text
-            parser = etree.HTMLParser()
-            tree = etree.parse(StringIO(self.base_html), parser)
+            
+            try:
+                nav_link = self.base_url + unprocessed['link'][1:]
+                response = requests.get(nav_link)
+                self.base_html = response.text
+                parser = etree.HTMLParser()
+                tree = etree.parse(StringIO(self.base_html), parser)
+            except:
+                print ("Could not Parse")
+                continue
 
             try:
                 company_name = tree.xpath("//td[@itemprop='legalName']")[0]
