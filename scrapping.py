@@ -121,7 +121,6 @@ class Soce():
                 tree = etree.parse(StringIO(self.base_html), parser)
             except:
                 print ("Could not Parse")
-                continue
 
             try:
                 company_name = tree.xpath("//td[@itemprop='legalName']")[0]
