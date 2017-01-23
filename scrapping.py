@@ -205,5 +205,12 @@ soce = Soce()
 #         nav_link = each_category.lower().replace(' ', '-') + '/' + str(i)
 #         soce.get_page(nav_link)
 #         soce.parse_links_in_page(each_category, i)
-soce.navigate_page_for_data()
+
+def scrap_data():
+    try:
+        soce.navigate_page_for_data()
+    except:
+        scrap_data()
+
+scrap_data()
 # soce.export_to_csv()
